@@ -12,29 +12,39 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MariaDB: " . mysqli_connect_error();
   exit;
 }
-$query = "
-    SELECT A.pno, e1.fname, e1.lname, e2.fname, e2.lname
-    FROM Works_On A, Works_On B, employee e1, employee e2
-    WHERE A.PNO = B.PNO AND A.ESSN < B.ESSN AND e1.ssn = a.essn AND e2.ssn = b.essn
-    ORDER BY PNO, e1.fname, e1.lname, e2.fname, e2.lname";
+$query =
+        "SELECT A.pno, e1.fname AS First1, e1.lname AS Last1, e2.fname AS First2, e2.lname AS Last2
+        FROM works_on A, works_on B,  employee e1, employee e2
+        WHERE  A.pno = B.pno AND A.essn < B.essn AND e1.ssn = A.essn AND e2.ssn = B.essn
+        ORDER by A.pno";
+ $result = mysqli_query($con, $query);
+ if (!$result) {
+   print ( "Could not successfully run query ($query) from DB: " . mysqli_error($con) . "<br>");
+   exit;
+ }
 
-$results = mysqli_query($con, $query);
-if (!$results) {
-  print ( "Could not successfully run query ($query) from DB: " . mysqli_error($con) . "<br>");
-  exit;
-}
+ if (mysqli_num_rows($result) == 0) {
+   print ("No rows found, nothing to print so am exiting<br>");
+   exit;
+ }
 
-if (mysqli_num_rows($results) == 0) {
-  print ("No rows found, nothing to print so am exiting<br>");
-  exit;
-}
+     // Print the column names as the headers of a table
+     echo '<table border="1|0"><tr>';
+     for($i = 0; $i < mysqli_num_fields($result); $i++) {
+         $field_info = mysqli_fetch_field($result);
+         echo "<th>{$field_info->name}</th>";
+     }
 
-print("Results: <br>");
+     // Print the data
+     while($row = mysqli_fetch_row($result)) {
+         echo "<tr>";
+         foreach($row as $_column) {
+             echo "<td>  {$_column}  </td>";
+         }
+         echo "</tr>";
+     }
 
-while($record = mysqli_fetch_assoc($results)){
-  print("$record <br>");
-
-}
+     echo "</table>";
 mysqli_close($con);
 
 ?>

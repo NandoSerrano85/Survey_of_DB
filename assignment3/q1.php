@@ -62,14 +62,14 @@ else {
     exit;
   }
 
-  $q1 = mysqli_fetch_assoc($dep_emp)
-  $q2 = mysqli_fetch_assoc($emp_mgr)
+  $q1 = mysqli_fetch_assoc($dep_emp);
+  $q2 = mysqli_fetch_assoc($emp_mgr);
   print("Results: <br>");
   print("Dependent: $q1[dependent_name] <br>");
   print("Employee: $q1[fname] $q1[lname]<br>");
   print("Manager: $q2[fname] $q2[lname]<br>");
 
-    
+
   mysqli_close($con);
 }
 ?>
