@@ -16,7 +16,7 @@ if (!($dependents )) {
  <FORM method="POST" action="{$_SERVER['PHP_SELF']}">
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
  <font color= 'red'>$errormsg</font><br>
- Department Number: <input type="text" name="dependents" size="9" value="$dependents">
+ Dependent Name: <input type="text" name="dependents" size="9" value="$dependents">
  <br/>
  <br>
  <INPUT type="submit" value=" Submit ">
@@ -62,14 +62,14 @@ else {
     exit;
   }
 
+  $q1 = mysqli_fetch_assoc($dep_emp)
+  $q2 = mysqli_fetch_assoc($emp_mgr)
   print("Results: <br>");
-  while (($q1 = mysqli_fetch_assoc($dep_emp)) && ($q2 = mysqli_fetch_assoc($emp_mgr))) {
-      print("Dependent: $q1[dependent_name] <br>");
-      print("Employee: $q1[fname] $q1[lname]<br>");
-      print("Manager: $q2[fname] $q2[lname]<br>");
+  print("Dependent: $q1[dependent_name] <br>");
+  print("Employee: $q1[fname] $q1[lname]<br>");
+  print("Manager: $q2[fname] $q2[lname]<br>");
 
-    print "<br>";
-  }
+    
   mysqli_close($con);
 }
 ?>
