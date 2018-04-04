@@ -1,0 +1,17 @@
+0.25
+Cynthia    Eggs
+Cynthia    Pasta
+David      Cereal
+David      Orange
+David      Pasta
+David      Yogurt
+Lucy       Orange
+Lucy       Pasta
+Mike       Cereal
+Mike       Pasta
+Mike       Yogurt
+Tim        Fish
+Tim        Orange
+Vanessa    Eggs
+Vanessa    Pasta
+Vanessa    Yogurt

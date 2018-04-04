@@ -1,0 +1,98 @@
+
+************ COP 4722: Survey of Database Systems ************
+*                                                            *
+*               -- Assignment 5: Data Mining --              *
+*                                                            *
+**************************************************************
+
+************************* Data Sample ************************
+
+    Customer             ItemsPurchased
+    ========             ==============
+	Cynthia		            Eggs
+	Cynthia		           Pasta
+	 David		          Cereal
+	 David		          Orange
+	 David		           Pasta
+	 David		          Yogurt
+	  Lucy		          Orange
+	  Lucy		           Pasta
+	  Mike		          Cereal
+	  Mike		           Pasta
+	  Mike		          Yogurt
+	   Tim		            Fish
+	   Tim		          Orange
+	Vanessa		            Eggs
+	Vanessa		           Pasta
+	Vanessa		          Yogurt
+
+
+**************************** CASE ****************************
+
+
+Minimum support value: 0.25
+
+   Results of L-1 itemsets:
+	Eggs       2
+	Pasta      5
+	Cereal     2
+	Orange     3
+	Yogurt     3
+
+
+   Results of L-2 itemsets:
+	Eggs	Pasta	2
+	   Eggs   ==> Pasta  Confidence = 1.00, Interest = 0.17 
+		Support: LHSuRHS = 0.33, LHS = 0.33, RHS = 0.83 
+	   Pasta  ==> Eggs  Confidence = 0.40, Interest = 0.07 
+		Support: LHSuRHS = 0.33, LHS = 0.83, RHS = 0.33 
+	Eggs	Yogurt	1
+	   Eggs   ==> Yogurt  Confidence = 0.50, Interest = 0.00 
+		Support: LHSuRHS = 0.17, LHS = 0.33, RHS = 0.50 
+	   Yogurt ==> Eggs  Confidence = 0.33, Interest = 0.00 
+		Support: LHSuRHS = 0.17, LHS = 0.50, RHS = 0.33 
+	Pasta	Cereal	2
+	   Pasta  ==> Cereal  Confidence = 0.40, Interest = 0.07 
+		Support: LHSuRHS = 0.33, LHS = 0.83, RHS = 0.33 
+	   Cereal ==> Pasta  Confidence = 1.00, Interest = 0.17 
+		Support: LHSuRHS = 0.33, LHS = 0.33, RHS = 0.83 
+	Pasta	Orange	2
+	   Pasta  ==> Orange  Confidence = 0.40, Interest = 0.10 
+		Support: LHSuRHS = 0.33, LHS = 0.83, RHS = 0.50 
+	   Orange ==> Pasta  Confidence = 0.67, Interest = 0.17 
+		Support: LHSuRHS = 0.33, LHS = 0.50, RHS = 0.83 
+	Pasta	Yogurt	3
+	   Pasta  ==> Yogurt  Confidence = 0.60, Interest = 0.10 
+		Support: LHSuRHS = 0.50, LHS = 0.83, RHS = 0.50 
+	   Yogurt ==> Pasta  Confidence = 1.00, Interest = 0.17 
+		Support: LHSuRHS = 0.50, LHS = 0.50, RHS = 0.83 
+	Cereal	Orange	1
+	   Cereal ==> Orange  Confidence = 0.50, Interest = 0.00 
+		Support: LHSuRHS = 0.17, LHS = 0.33, RHS = 0.50 
+	   Orange ==> Cereal  Confidence = 0.33, Interest = 0.00 
+		Support: LHSuRHS = 0.17, LHS = 0.50, RHS = 0.33 
+	Cereal	Yogurt	2
+	   Cereal ==> Yogurt  Confidence = 1.00, Interest = 0.50 
+		Support: LHSuRHS = 0.33, LHS = 0.33, RHS = 0.50 
+	   Yogurt ==> Cereal  Confidence = 0.67, Interest = 0.33 
+		Support: LHSuRHS = 0.33, LHS = 0.50, RHS = 0.33 
+	Orange	Yogurt	1
+	   Orange ==> Yogurt  Confidence = 0.33, Interest = 0.17 
+		Support: LHSuRHS = 0.17, LHS = 0.50, RHS = 0.50 
+	   Yogurt ==> Orange  Confidence = 0.33, Interest = 0.17 
+		Support: LHSuRHS = 0.17, LHS = 0.50, RHS = 0.50 
+
+   Results of L-3 itemsets:
+	Eggs      Pasta     Yogurt    1         
+	Pasta     Cereal    Orange    1         
+	Pasta     Cereal    Yogurt    1         
+	Pasta     Orange    Yogurt    1         
+	Cereal    Orange    Yogurt    1         
+
+   Results of L-4 itemsets:
+	Pasta     Cereal    Orange    Yogurt    1         
+
+   Results of L-5 itemsets:
+
+
+**************************** END ****************************
