@@ -2,11 +2,11 @@
 # Illustrates a query with a browser input value
 #  and returns several rows of values using MySQL
 print ("<br>");
-$deparments = isset($_POST['deparments']) ? $_POST['deparments'] : '';
+$departments = isset($_POST['deparments']) ? $_POST['deparments'] : '';
 $visited = isset($_POST['visited']) ? $_POST['visited'] : '';
 $errormsg = '';
 
-if (!($deparments )) {
+if (!($departments )) {
   if ($visited) {
      $errormsg = 'Please enter a dependent name';
   }
@@ -16,7 +16,7 @@ if (!($deparments )) {
  <FORM method="POST" action="{$_SERVER['PHP_SELF']}">
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
  <font color= 'red'>$errormsg</font><br>
- Department Number: <input type="text" name="deparments" size="9" value="$deparments">
+ Department Number: <input type="text" name="deparments" size="9" value="$departments">
  <br/>
  <br>
  <INPUT type="submit" value=" Submit ">
@@ -38,12 +38,12 @@ else {
   $query = "
       SELECT dname, Count(distinct pname) As NumberOfProjects, SUM(HOURS) As TotalWorkHours
       FROM department, project, works_on
-      Where dnum='$departmentnumber'
+      Where dnum='$departments'
       AND pno=pnumber
       AND department.dnumber=project.dnum
       Group by dname";
 
-  results = mysqli_query($con, $query);
+  $results = mysqli_query($con, $query);
   if (!$results) {
     print ( "Could not successfully run query ($query) from DB: " . mysqli_error($con) . "<br>");
     exit;
@@ -55,16 +55,17 @@ else {
   }
 
   print("Results: <br>");
-  $output = mysqli_fetch_assoc($results)
-  foreach ($output as $items) {
-    print(" &nbsp; &nbsp; &nbsp; &nbsp; Department name: $items[0] <br>");
-    print(" &nbsp; &nbsp; &nbsp; &nbsp; Number of project: $items[1] <br>");
-    print(" &nbsp; &nbsp; &nbsp; &nbsp; Total work hours: $items[2] <br>");
-    print("<br>");
-  }
-  
+  $output = mysqli_fetch_assoc($results);
 
-    
+      print(" &nbsp; &nbsp; &nbsp; &nbsp; Department name: $output[dname] <br>");
+      print(" &nbsp; &nbsp; &nbsp; &nbsp; Number of project: $output[NumberOfProjects] <br>");
+      print(" &nbsp; &nbsp; &nbsp; &nbsp; Total work hours: $output[TotalWorkHours] <br>");
+      print("<br>");
+
+
+
+
+
   mysqli_close($con);
 }
 ?>
